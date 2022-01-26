@@ -5,13 +5,22 @@ var teclas = {
     RIGHT: 39
 };
 
+document.getElementById("user_color");
+
+var boton_color = document.getElementById("rainbow");
+botoncito.addEventListener("click", aviso);
+
+function aviso()
+{
+    alert("Color seleccionado! ahora mové las flechas del teclado para dibujar!")
+}
+
 document.addEventListener("keyup", dibujarTeclado);
 var cuadrito = document.getElementById("area_de_dibujo");
 var papel = cuadrito.getContext("2d");
 var x = 150;
 var y = 150;
 
-dibujarLinea("red", 149, 149, 151, 151, papel);
 
 function dibujarLinea(color,xinicial,yinicial,xfinal,yfinal,lienzo)
 {
@@ -26,28 +35,28 @@ function dibujarLinea(color,xinicial,yinicial,xfinal,yfinal,lienzo)
 
 function dibujarTeclado(evento)
 {
-    var colorcito = "blue";
+    var color = boton_color.value;
     var movimiento = 10;
   switch(evento.keyCode)
 {
     case teclas.UP:
-    dibujarLinea(colorcito, x, y, x, (y - movimiento), papel);
+    dibujarLinea(color, x, y, x, (y - movimiento), papel);
     y = y - movimiento;
         break;
     case teclas.DOWN:
-    dibujarLinea(colorcito, x, y, x, (y + movimiento), papel);
+    dibujarLinea(color, x, y, x, (y + movimiento), papel);
         y = y + movimiento;
         break;  
     case teclas.LEFT:
-        dibujarLinea(colorcito, x, y, (x - movimiento), y, papel);
+        dibujarLinea(color, x, y, (x - movimiento), y, papel);
         x = x - movimiento;
         break;    
     case teclas.RIGHT:
-        dibujarLinea(colorcito, x, y, (x + movimiento), y, papel);
+        dibujarLinea(color, x, y, (x + movimiento), y, papel);
         x = x + movimiento;
         break;  
     default:
-        alert("Ups... no funciono sin las flechas del teclado... probá de nuevo!");
+        alert("Ups... por ahora no funciona sin las flechas del teclado... probá de nuevo!");
         break;
 }
 }
