@@ -5,15 +5,17 @@ var teclas = {
     RIGHT: 39
 };
 
-document.getElementById("user_color");
-
-var boton_color = document.getElementById("rainbow");
+document.getElementById("botoncito");
 botoncito.addEventListener("click", aviso);
 
 function aviso()
 {
-    alert("Color seleccionado! ahora mové las flechas del teclado para dibujar!")
+    alert("Color " + boton_color.value + " seleccionado!!");
 }
+
+var boton_color = document.getElementById("rainbow");
+
+
 
 document.addEventListener("keyup", dibujarTeclado);
 var cuadrito = document.getElementById("area_de_dibujo");
@@ -38,6 +40,7 @@ function dibujarTeclado(evento)
     var color = boton_color.value;
     var movimiento = 10;
   switch(evento.keyCode)
+
 {
     case teclas.UP:
     dibujarLinea(color, x, y, x, (y - movimiento), papel);
@@ -60,3 +63,4 @@ function dibujarTeclado(evento)
         break;
 }
 }
+
